@@ -9,4 +9,10 @@ class DirectorsController < ApplicationController
     render({:template => "director_templates/eldest.html.erb"})
   end
 
+  def director_details
+    the_id =params.fetch("an_id")
+    @the_director=Director.where({:id=>the_id}).at(0) 
+    render({:template => "director_templates/details.html.erb"})
+  end
+
 end
