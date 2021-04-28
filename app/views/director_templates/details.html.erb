@@ -39,7 +39,7 @@
     Image
   </dt>
   <dd>
-    h<%= @the_director.image%>
+    <img src="http://robohash.org/<%= @the_director.image %>">
   </dd>
 
   <dt>
@@ -56,3 +56,51 @@
     <%= time_ago_in_words(@the_director.updated_at)%>
   </dd>
 </dl>
+
+&nbsp;|&nbsp;
+
+<h2>Filmography</h2>
+
+<table border ="1">
+<tr>
+    <td>
+      ID
+    </td>
+    <td>
+      Image
+    </td>
+    <td>
+      Title
+    </td>
+    <td>
+      Year
+    </td>
+    <td>
+      Director
+    </td>
+    <td>
+      
+    </td>
+<% @filmography.each do |a_movie|%>
+  <tr>
+    <td>
+      <%= a_movie.id%>
+    </td>
+    <td>
+      <img src="http://robohash.org/<%= a_movie.image %>">
+    </td>
+    <td>
+      <%= a_movie.title %>
+    </td>
+    <td>
+      <%= a_movie.year %>
+    </td>
+    <td>
+      <%= @the_director.name %>
+    </td>
+    <td>
+      <a href="/movies/<%= a_movie.id %>">Show details</a>
+    </td>
+  </tr>
+<% end %>
+</table>
