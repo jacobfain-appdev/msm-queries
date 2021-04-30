@@ -18,4 +18,9 @@ class DirectorsController < ApplicationController
     render({:template => "director_templates/details.html.erb"})
   end
 
+  def prodigy
+    @youngest_director = Director.where.not({:dob => nil}).order({:dob=> :desc}).at(0) 
+    render({:template => "director_templates/youngest.html.erb"})
+  end
+
 end
