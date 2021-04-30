@@ -48,6 +48,7 @@
 
 <h2>Filmography</h2>
 
+
 <table border="1">
   <tr>
     <th>
@@ -69,24 +70,27 @@
     <th>
     </th>
   </tr>
-
+<% @characters.each do |a_character|%>
   <tr>
       <td>
-        The Shawshank Redemption
+        <%m = a_character.movie_id%>
+        <%n = Movie.where({:id=>m}).at(0)%>
+        <%= n.title%>
       </td>
 
       <td>
-        1994
+        <%= n.year%>
       </td>
 
       <td>
-
-
-          Frank Darabont
+        <%m = a_character.movie_id%>
+        <%n = Movie.where({:id=>m}).at(0)%>
+        <%d = Director.where({:id=>n.director_id}).at(0)%>
+        <%= d.name%>
       </td>
 
       <td>
-        Andy Dufresne
+        <%=a_character.name%>
       </td>
 
       <td>
@@ -95,4 +99,5 @@
         </a>
       </td>
   </tr>
+  <%end%>
 </table>
